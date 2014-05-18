@@ -1,3 +1,4 @@
+require('./helpers');
 var config = require('./config');
 
 var express = require('express');
@@ -7,7 +8,8 @@ var path = require('path');
 app = express();
 
 
-//app.set('views', __dirname + '/app/views');
+app.set('views', __dirname + '/app/views');
+app.locals.basedir = path.join(__dirname, '/app/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.bodyParser());

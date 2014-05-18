@@ -1,17 +1,17 @@
 module.exports = function(options){
-  var model = options.db.define(options.table, {
+  var Model = options.db.define(options.table, {
     id_model: Number,
     id_brand: Number,
-    model_name: String
+    model_name: String,
+    price: Number
   }, {
-    id: 'id_model'
-  },{
+    id: 'id_model',
     methods: {
-      Brand: function(){
 
-      }
+    },
+    hasOne: {
+
     }
   });
-
-  return model;
+  Model.hasOne('brand', options.db.models.tbl_brand,  {reverse: 'models'});
 };

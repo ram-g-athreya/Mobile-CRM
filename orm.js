@@ -1,11 +1,13 @@
 var orm = require("orm");
-var tbl_prefix = "tbl_";
+
 module.exports = function(config, callback){
     orm.connect(config, function (err, db) {
       if (err) throw err;
+      db.settings.set("properties.association_key", "{field}");
 
-      db.brand = require('./app/models/Brand')({db: db, table: tbl_prefix + 'brand'});
-      db.model = require('./app/models/Model')({db: db, table: tbl_prefix + 'model'});
+      require('./app/models/Brand')({orm: orm, db: db, table: 'tbl_brand'});
+      require('./app/models/Model')({orm: orm, db: db, table: 'tbl_model'});
+      require('./app/models/Product')({orm: orm, db: db, table: 'tbl_product'});
 
       app.db = db;
       callback();
