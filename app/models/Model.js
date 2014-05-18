@@ -1,10 +1,17 @@
 module.exports = function(options){
   var model = options.db.define(options.table, {
+    id_model: Number,
     id_brand: Number,
-    brand_name: String
+    model_name: String
   }, {
-    id: 'id_brand'
+    id: 'id_model'
+  },{
+    methods: {
+      Brand: function(){
+
+      }
+    }
   });
-  
+
   return model;
 };
