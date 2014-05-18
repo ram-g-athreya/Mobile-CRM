@@ -1,4 +1,4 @@
-exports.index = function(req, res){
+exports.productsIndex = function(req, res){
   app.db.models.tbl_product.find(function(err, products){
     var result = Array();
     var index = 0;
@@ -11,7 +11,11 @@ exports.index = function(req, res){
         cb();
       });
     }, function(){
-        res.render('site/index', {data: result});
+        res.render('site/products/index', {data: result});
     });
   });
+};
+
+exports.productDetails = function(req, res){
+  res.render('site/products/details');
 };

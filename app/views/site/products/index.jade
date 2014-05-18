@@ -1,0 +1,37 @@
+doctype html
+html(lang="en")
+  head
+    title Mobile CRM
+    include /templates/assets.jade
+    include /mixins/checkbox.jade
+
+  body(class='skin-blue')
+    include /templates/header.jade
+    div(class="wrapper row-offcanvas row-offcanvas-left")
+      aside(class="left-side sidebar-offcanvas")
+        h3(class="p-l-20")
+          strong REFINE
+        h4(class="p-l-20") Price
+        +checkbox("Rs 10,000 and below")
+        +checkbox("Rs 10,000 - Rs 20,000")
+        +checkbox("Rs 20,000 - Rs 30,000")
+        +checkbox("Rs 30,000 and above")
+
+        h4(class="p-l-20") Brand
+        +checkbox("Samsung")
+        +checkbox("HTC")
+        +checkbox("Micromax")
+
+      aside(class="right-side")
+        section(class="content-header")
+          h1 Mobiles
+        section(class="content")
+          - for (var index = 0; index < data.length; index++) {
+            a(class="product-thumb",href="product/" + data[index].product.id_product)
+              div(class="col-lg-3 col-xs-6")
+                  img(src="images/model/" + data[index].product.id_model + ".jpg")
+                  h4(class="text-center")
+                    = data[index].details.name
+                  h5(class="text-center")
+                    = data[index].details.price
+          - }

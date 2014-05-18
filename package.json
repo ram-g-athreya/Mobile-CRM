@@ -10,8 +10,10 @@
         "jade": "*",
         "connect": "*",
         "request": "2.x",
+        "mysql" : "0.9.x",
         "orm" : "2.1.10",
-        "mysql" : "0.9.x"
+        "passport": "0.2.0",
+        "passport-local": "1.0.0"
     },
     "engines": {
         "node": "0.10.x",
