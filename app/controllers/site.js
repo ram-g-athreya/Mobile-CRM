@@ -1,5 +1,5 @@
 exports.productsIndex = function(req, res){
-  app.db.models.tbl_product.find(function(err, products){
+  app.db.models.tbl_product.find({}, {limit: 100}, function(err, products){
     var result = Array();
     var index = 0;
     forEach(products, function(product, cb){

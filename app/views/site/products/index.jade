@@ -4,6 +4,7 @@ html(lang="en")
     title Mobile CRM
     include /templates/assets.jade
     include /mixins/checkbox.jade
+    include /mixins/offer-badge.jade
 
   body(class='skin-blue')
     include /templates/header.jade
@@ -21,6 +22,7 @@ html(lang="en")
         +checkbox("Samsung")
         +checkbox("HTC")
         +checkbox("Micromax")
+        +checkbox("Sony")
 
       aside(class="right-side")
         section(class="content-header")
@@ -29,9 +31,11 @@ html(lang="en")
           - for (var index = 0; index < data.length; index++) {
             a(class="product-thumb",href="product/" + data[index].product.id_product)
               div(class="col-lg-3 col-xs-6")
+                  - var offer = data[index].product.offer
+                  +offer-badge(offer)
                   img(src="images/model/" + data[index].product.id_model + ".jpg")
                   h4(class="text-center")
                     = data[index].details.name
                   h5(class="text-center")
-                    = data[index].details.price
+                    | Rs #{data[index].details.price}
           - }
