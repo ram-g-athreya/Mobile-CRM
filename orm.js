@@ -8,6 +8,8 @@ module.exports = function(config, callback){
       require('./app/models/Brand')({orm: orm, db: db, table: 'tbl_brand'});
       require('./app/models/Model')({orm: orm, db: db, table: 'tbl_model'});
       require('./app/models/Product')({orm: orm, db: db, table: 'tbl_product'});
+      require('./app/models/Customer')({orm: orm, db: db, table: 'tbl_customer'});
+      require('./app/models/Sold')({orm: orm, db: db, table: 'tbl_sold'});
 
       app.db = db;
       callback();

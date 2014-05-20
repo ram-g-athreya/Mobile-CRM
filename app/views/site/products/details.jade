@@ -3,6 +3,60 @@ html(lang="en")
   head
     title Mobile CRM
     include /templates/assets.jade
-    include /mixins/checkbox.jade
+    include /mixins/header.jade
+    script(src="/js/custom/ProductDetails.js")
 
+    script(type="text/javascript").
+      productDetails({id_product: #{product.id_product}, is_sold: #{product.is_sold}});
   body(class='skin-blue')
+    +header()
+    div(class="fluid-container")
+      div(class="row")
+        div(class="col-md-8 col-md-offset-2 right-side", style="background: white; padding: 0")
+          section(class="content-header")
+            h1
+              = details.name
+          div(class="col-lg-5 col-xs-11 m-t-20")
+            div(class="product-large")
+              - if(product.is_sold){
+                div(class="offer-badge", style="margin-left: -135px;")
+                  h4(style="margin-bottom: 0;margin-top: 17px;") SOLD
+              - }
+              img(src="/images/model/" + product.id_model + ".jpg")
+          div(class="col-lg-7 col-xs-11 m-t-20")
+            div(class="box box-primary")
+              div(class="box-header")
+                h3(class="box-title")
+                  | Product Details
+              table(class="table", style="margin-bottom: 0;")
+                tr
+                  td Price
+                  td Rs #{product.price}
+                tr
+                  td Warranty
+                  - var warranty = (product.warranty) ? '1 Year Warranty' : 'No Warranty';
+                  td
+                    = warranty
+                tr
+                  td Offer
+                  - var offer = (product.offer) ? product.offer + '% Off' : 'No Offer';
+                  td
+                    = offer
+                tr
+                  td
+                    strong Final Price
+                  td
+                    strong Rs #{product.final_price}
+            - if(!product.is_sold) {
+              div(class="box box-success m-t-20")
+                div(class="box-header")
+                  h3(class="box-title")
+                    | Your Details
+                  div(class="form-group p-lr-10")
+                    input(type="text", class="form-control", placeholder="Name", name="customer_name")
+                    input(type="email", class="form-control m-t-10", placeholder="E-Mail", name="email")
+                    input(type="number", class="form-control m-t-10", placeholder="Mobile", name="phone")
+                    textarea(class="form-control m-t-10", placeholder="Address", rows="3", name="address")
+                  div
+                    button(id="buy", class="btn-flat btn-success", style="display: block; margin: auto; width: 100px; font-size: 20px;") Buy
+            - }

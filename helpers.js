@@ -40,4 +40,8 @@ doNTimes = function(options){
         options.cb();
     }
   })();
-}
+};
+
+emptyFn = function(){
+
+};

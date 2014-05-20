@@ -3,11 +3,15 @@ html(lang="en")
   head
     title Mobile CRM
     include /templates/assets.jade
+    include /mixins/header.jade
+    include /mixins/products/listings.jade
     include /mixins/checkbox.jade
-    include /mixins/offer-badge.jade
+    include /mixins/radio.jade
+    
+    script(src="js/custom/filter/FilterController.js")
 
   body(class='skin-blue')
-    include /templates/header.jade
+    +header({show_sidebar: true})
     div(class="wrapper row-offcanvas row-offcanvas-left")
       aside(class="left-side sidebar-offcanvas")
         h3(class="p-l-20")
@@ -24,18 +28,19 @@ html(lang="en")
         +checkbox("Micromax")
         +checkbox("Sony")
 
+        h4(class="p-l-20") Offer
+        +radio("Yes", "offer")
+        +radio("No", "offer")
+
+        h4(class="p-l-20") Warranty
+        +radio("Yes", "warranty")
+        +radio("No", "warranty")
+
+        div
+          button(class="btn btn-success", style="display: block; margin: auto;") FILTER
+
       aside(class="right-side")
         section(class="content-header")
           h1 Mobiles
         section(class="content")
-          - for (var index = 0; index < data.length; index++) {
-            a(class="product-thumb",href="product/" + data[index].product.id_product)
-              div(class="col-lg-3 col-xs-6")
-                  - var offer = data[index].product.offer
-                  +offer-badge(offer)
-                  img(src="images/model/" + data[index].product.id_model + ".jpg")
-                  h4(class="text-center")
-                    = data[index].details.name
-                  h5(class="text-center")
-                    | Rs #{data[index].details.price}
-          - }
+            +listings(data)

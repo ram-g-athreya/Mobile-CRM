@@ -1,0 +1,17 @@
+mixin listings(product, details)
+  - for (var index = 0; index < data.length; index++) {
+  - var product = data[index].product, details = data[index].details;
+    a(class="product-thumb",href="product/" + product.id_product, target="_blank")
+      div(class="col-lg-3 col-xs-6")
+          - if(product.offer > 0){
+            div(class="offer-badge")
+              h4(style="margin-bottom: 0;margin-top: 13px;")
+                = product.offer + "%"
+              h6(style="margin-top: 0;") OFF
+          - }
+          img(src="images/model/" + product.id_model + ".jpg")
+          h4(class="text-center")
+            = details.name
+          h5(class="text-center")
+            | Rs #{details.price}
+  - }

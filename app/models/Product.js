@@ -1,5 +1,5 @@
 module.exports = function(options){
-  var offer_range = [0, 5, 10, 15, 20];
+  var offer_range = [5, 10, 15, 20];
   var min = -20;
   var max = 20;
 
@@ -8,7 +8,9 @@ module.exports = function(options){
     id_model: Number,
     offer: Number,
     warranty: Number,
-    price: Number
+    price: Number,
+    final_price: Number,
+    is_sold: Number
   },{
     id: 'id_product',
     methods: {
@@ -34,13 +36,15 @@ module.exports = function(options){
     Product.find({id_product: id_product}, function(err, product){
       product = product[0];
       var offer = (Math.random()>=0.9)?getRandomItem(offer_range):0;
-      var warranty = Math.random() >= 0.7;
+      var warranty = Math.random() >= 0.3;
       product.getModel(function(err, model){
-        var selling_price = model.price - model.price * getRandomNumber(min, max) / 100;
+        var selling_price = parseInt(model.price - model.price * getRandomNumber(min, max) / 100);
+        var final_price = parseInt((1 - offer / 100) * selling_price);
 
         product.price = selling_price;
         product.offer = offer;
         product.warranty = warranty;
+        product.final_price = final_price;
         product.save(function(err){
           if(cb)
             cb();
@@ -53,17 +57,18 @@ module.exports = function(options){
     options.db.models.tbl_model.count(function(err, count){
       var id_model = getRandomNumber(1, count);
       var warranty = Math.random() >= 0.7;
-      var offer = getRandomItem(offer_range);
+      var offer = (Math.random()>=0.9)?getRandomItem(offer_range):0;
 
       options.db.models.tbl_model.find({id_model: id_model}, function(err, model){
         model = model[0];
-        var selling_price = model.price - model.price * getRandomNumber(min, max) / 100;
-
+        var selling_price = parseInt(model.price - model.price * getRandomNumber(min, max) / 100);
+        var final_price = parseInt((1 - offer / 100) * selling_price);
         Product.create([{
           id_model: id_model,
           warranty: warranty,
           offer: offer,
-          price: selling_price
+          price: selling_price,
+          final_price: final_price
         }], function(){});
       });
     });
