@@ -26,11 +26,17 @@ app.configure(function() {
     require('./orm')(config.db, function(){
       http.createServer(app).listen(3000, function() {
         console.log('Express server listening on port 3000');
-        // for(var index = 0;index<10;index++)
-        //   app.db.models.tbl_product.generateProduct();
-        // for(var index = 1;index<=3000;index++){
-        //   app.db.models.tbl_product.updateProduct(index);
-        // }
+
+        app.db.models.tbl_product.find({
+          //price:
+          //or: [{price: app.orm.between(5000, 10000)}, {price: app.orm.between(10000, 20000)}]
+        }, {limit: 5},
+        function(err, data){
+          if(err)throw err;
+          for(var index in data){
+            //console.log(data[index].price);
+          }
+        });
       });
     });
 });

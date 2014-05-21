@@ -1,0 +1,16 @@
+- for (var index = 0; index < data.length; index++) {
+- var item = data[index];
+  a(class="product-thumb",href="product/" + item.id_product, target="_blank")
+    div(class="col-lg-3 col-xs-6")
+        - if(item.offer > 0){
+          div(class="offer-badge")
+            h4(style="margin-bottom: 0;margin-top: 13px;")
+              = item.offer + "%"
+            h6(style="margin-top: 0;") OFF
+        - }
+        img(src="images/model/" + item.id_model + ".jpg")
+        h4(class="text-center", style="margin-top: 5px;")
+          = item.brand_name + " " + item.model_name
+        h5(class="text-center", style="margin-bottom: 20px;")
+          | Rs #{item.price}
+- }

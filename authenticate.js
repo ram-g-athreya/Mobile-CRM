@@ -7,12 +7,12 @@ passport.use(new LocalStrategy({
     passwordField: 'password'
 },
 function(username, password, done) {
-    db.query("select * from tbl_user where username='" + username + "'", function(err, result) {
+    app.db.driver.execQuery("select * from tbl_user where username='" + username + "'", function(err, result) {
         if (err)
             return done(err);
 
-        if (result.rows.length) {
-            var data = result.rows[0];
+        if (result.length) {
+            var data = result[0];
             if (data.password === password) {
                 done(null, data.id_user.toString());
             }

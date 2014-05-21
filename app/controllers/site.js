@@ -1,18 +1,64 @@
+function generateFilterParams(params){
+  var sql = "select id_model, id_product, tbl_product.price, offer, is_sold, brand_name, model_name from tbl_product " +
+  "inner join tbl_model using(id_model) " +
+  "inner join tbl_brand using(id_brand) " +
+  "where is_sold = 0 ";
+  params.offer = parseInt(params.offer);
+  params.warranty = parseInt(params.warranty);
+
+  var page_size = 8;
+  var offset = (params.page) ? " offset " + (params.page - 1) * page_size : "";
+
+  if(params.price){
+    var price = params.price, _price;
+    sql += "and (";
+    for(var index in price){
+      if(index > 0)
+        sql +=" or ";
+      _price = price[index].split('|');
+      sql += "(tbl_product.price>=" + _price[0] + " and tbl_product.price<=" + _price[1] + ")";
+    }
+    sql += ")";
+  }
+
+  if(params.id_brand){
+    var brands = params.id_brand;
+    sql += "and (";
+    for(var index in brands){
+      if(index > 0)
+        sql +=" or ";
+      sql += "tbl_brand.id_brand = " + brands[index];
+    }
+    sql += ")";
+  }
+
+  if(params.offer){
+      sql += " and offer > 0";
+  }
+
+  if(params.warranty){
+      sql += " and warranty = " + parseInt(params.warranty);
+  }
+
+  return sql + " order by id_product asc limit " + page_size + offset;
+}
+
+exports.filterProducts = function(req, res){
+  var sql = generateFilterParams({
+    price: req.param('price'),
+    id_brand: req.param('id_brand'),
+    offer: req.param('offer'),
+    warranty: req.param('warranty'),
+    page: req.param('page')
+  });
+  app.db.driver.execQuery(sql, function(err, products){
+    res.render('templates/products/listings', {data: products});
+  });
+}
+
 exports.productsIndex = function(req, res){
-  app.db.models.tbl_product.find({is_sold: 0}, {limit: 100}, function(err, products){
-    var result = Array();
-    var index = 0;
-    forEach(products, function(product, cb){
-      product.getProductDetails(function(details){
-        result[index++]={
-          product: product,
-          details: details
-        };
-        cb();
-      });
-    }, function(){
-        res.render('site/products/index', {data: result});
-    });
+  app.db.driver.execQuery(generateFilterParams({}), function(err, products){
+    res.render('site/products/index', {data: products});
   });
 };
 
@@ -75,21 +121,10 @@ exports.sellProduct = function(req, res){
 
 
 exports.login = function(req, res){
-  res.render('site/login');
-};
-
-exports.dologin = function(req, res){
-  var params = {
-    username: req.param('username'),
-    password: req.param('password')
-  };
-  app.db.models.tbl_user.exists(params, function(err, exists){
-    if(err)throw err;
-    if(exists){
-      res.redirect('admin');
-    }
-    else{
-      res.redirect('login');
-    }
-  });
+  if(req.user){
+    res.redirect('/admin');
+  }
+  else{
+    res.render('site/login');
+  }
 };

@@ -13,6 +13,7 @@ module.exports = function(config, callback){
       require('./app/models/User')({orm: orm, db: db, table: 'tbl_user'});
 
       app.db = db;
+      app.orm = orm;
       callback();
     });
 }
