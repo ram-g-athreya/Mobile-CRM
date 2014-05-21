@@ -9,3 +9,10 @@ mixin header(options)
           span(class="icon-bar")
           span(class="icon-bar")
       - }
+      - if(options && !options.hide_login){
+        div(class="navbar-right")
+          ul(class="nav navbar-nav")
+            li(class="user user-menu")
+              a(href="login")
+                span Login
+      - }

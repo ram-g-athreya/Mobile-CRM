@@ -1,0 +1,12 @@
+doctype html
+html(lang="en")
+  head
+    title Mobile CRM
+    include /templates/assets.jade
+    include /mixins/header.jade
+
+  body(class='skin-blue')
+    +header({show_sidebar: true, hide_login: true})
+    div(class="wrapper row-offcanvas row-offcanvas-left")
+      aside(class="left-side sidebar-offcanvas")
+      include /templates/products/details.jade

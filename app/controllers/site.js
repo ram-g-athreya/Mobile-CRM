@@ -28,7 +28,6 @@ exports.productDetails = function(req, res){
         res.render('site/products/details', data);
     });
   });
-
 };
 
 exports.sellProduct = function(req, res){
@@ -71,5 +70,26 @@ exports.sellProduct = function(req, res){
           });
         });
       }
+  });
+};
+
+
+exports.login = function(req, res){
+  res.render('site/login');
+};
+
+exports.dologin = function(req, res){
+  var params = {
+    username: req.param('username'),
+    password: req.param('password')
+  };
+  app.db.models.tbl_user.exists(params, function(err, exists){
+    if(err)throw err;
+    if(exists){
+      res.redirect('admin');
+    }
+    else{
+      res.redirect('login');
+    }
   });
 };

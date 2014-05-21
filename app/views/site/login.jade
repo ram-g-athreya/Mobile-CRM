@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  head
+    title Mobile CRM
+    include /templates/assets.jade
+    include /mixins/header.jade
+
+  body(class='bg-black')
+    div(class="form-box", id="login-box")
+      div(class="form-box")
+        div(class="header") Sign In
+        form(action="dologin", method="post")
+          div(class="body bg-gray")
+            div(class="form-group")
+              input(type="text" name="username" class="form-control" placeholder="User ID")
+            div(class="form-group")
+              input(type="password" name="password" class="form-control" placeholder="Password")
+          div(class="footer")
+            button(type="submit" class="btn bg-olive btn-block") Sign me in

@@ -1,0 +1,56 @@
+doctype html
+html(lang="en")
+  head
+    title Mobile CRM
+    include /templates/assets.jade
+    include /mixins/header.jade
+    include /mixins/checkbox.jade
+    include /mixins/radio.jade
+
+  body(class='skin-blue')
+    +header({show_sidebar: true, hide_login: true})
+    div(class="wrapper row-offcanvas row-offcanvas-left")
+      aside(class="left-side sidebar-offcanvas")
+      aside(class="right-side")
+        section(class="content-header")
+          h1 Dashboard
+        section(class="content")
+          div(class="row", style="margin-left: -15px;")
+              div(class="col-lg-3 col-xs-6")
+                div(class="small-box bg-aqua", style="min-height: 100px;")
+                  div(class="inner")
+                    h3
+                      = product_count
+                    p
+                      | Products Listed
+                  div(class="icon", style="top: -20px;")
+                    i(class="ion ion-bag")
+
+              div(class="col-lg-3 col-xs-6")
+                div(class="small-box bg-green", style="min-height: 100px;")
+                  div(class="inner")
+                    h3
+                      = sold_count
+                    p
+                      | Products Sold
+                  div(class="icon", style="top: -20px;")
+                    i(class="fa fa-rupee")
+
+              div(class="col-lg-3 col-xs-6")
+                div(class="small-box bg-yellow", style="min-height: 100px;")
+                  div(class="inner")
+                    h3
+                      = customer_count
+                    p
+                      | Customers
+                  div(class="icon", style="top: -20px;")
+                    i(class="ion ion-person-add")
+              div(class="col-lg-3 col-xs-6")
+                div(class="small-box bg-red", style="min-height: 100px;")
+                  div(class="inner")
+                    h3
+                      = brand_count
+                    p
+                      | Brands
+                  div(class="icon", style="top: -20px;")
+                    i(class="fa fa-mobile")
