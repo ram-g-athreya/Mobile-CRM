@@ -9,8 +9,16 @@
             h6(style="margin-top: 0;") OFF
         - }
         img(src="images/model/" + item.id_model + ".jpg")
-        h4(class="text-center", style="margin-top: 5px;")
+        h4(class="text-center", style="margin: 5px 0;")
           = item.brand_name + " " + item.model_name
-        h5(class="text-center", style="margin-bottom: 20px;")
-          | Rs #{item.price}
+        - if(item.offer == 0) {
+          h5(class="text-center", style="margin-top: 0px; margin-bottom: 10px;")
+            | Rs #{item.final_price}
+        - }
+        - else{
+          h5(class="text-center", style="margin-top: 0px; margin-bottom: 10px;")
+            strike
+                | Rs #{item.price}
+            &nbsp;&nbsp;&nbsp;&nbsp; Rs #{item.final_price}
+        - }
 - }

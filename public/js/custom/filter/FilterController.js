@@ -1,7 +1,10 @@
-function filterController(){
+function filterController(options){
+
   $(document).ready(function(){
+    var id_brand_type = options.id_brand_type;
     var params = {
-      page: 1
+      page: 1,
+      id_brand_type: id_brand_type
     };
 
     function applyFilter(reset){
@@ -27,7 +30,8 @@ function filterController(){
         id_brand: $("[name=id_brand]:checked").map(function(){return $(this).val();}).get(),
         offer: $("[name=offer]:checked").val(),
         warranty: $("[name=warranty]:checked").val(),
-        page: 1
+        page: 1,
+        id_brand_type: id_brand_type
       };
       applyFilter(true);
     });

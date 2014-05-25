@@ -1,3 +1,4 @@
+
 require('./helpers');
 require('./authenticate');
 
@@ -20,23 +21,13 @@ app.configure(function() {
 
     app.locals.basedir = path.join(__dirname, '/app/views');
     app.use(app.router);
+    app.basepath = __dirname;
 
     require('./routes')();
-
     require('./orm')(config.db, function(){
       http.createServer(app).listen(3000, function() {
-        console.log('Express server listening on port 3000');
+        console.log('Server Started');
 
-        app.db.models.tbl_product.find({
-          //price:
-          //or: [{price: app.orm.between(5000, 10000)}, {price: app.orm.between(10000, 20000)}]
-        }, {limit: 5},
-        function(err, data){
-          if(err)throw err;
-          for(var index in data){
-            //console.log(data[index].price);
-          }
-        });
       });
     });
 });

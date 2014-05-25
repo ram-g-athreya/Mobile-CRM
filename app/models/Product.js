@@ -53,9 +53,10 @@ module.exports = function(options){
     });
   };
 
-  Product['generateProduct'] = function(){
-    options.db.models.tbl_model.count(function(err, count){
-      var id_model = getRandomNumber(1, count);
+  Product['generateProduct'] = function(opts){
+
+    function process(min, max){
+      var id_model = getRandomNumber(min, max);
       var warranty = Math.random() >= 0.7;
       var offer = (Math.random()>=0.9)?getRandomItem(offer_range):0;
 
@@ -68,10 +69,66 @@ module.exports = function(options){
           warranty: warranty,
           offer: offer,
           price: selling_price,
-          final_price: final_price
+          final_price: final_price,
+          is_sold: 0
         }], function(){});
       });
-    });
+    }
+
+    if(opts){
+      process(opts.min, opts.max);
+    }
+    else{
+        options.db.models.tbl_model.count(function(err, count){
+          process(1, count);
+        });
+    }
+  };
+
+  //Generate sql query based on parameters selected by user for filtering the results
+  Product['generateFilterParams'] = function(params){
+    var sql = "select id_model, id_product, tbl_product.price, final_price, offer, is_sold, brand_name, model_name from tbl_product " +
+    "inner join tbl_model using(id_model) " +
+    "inner join tbl_brand using(id_brand) " +
+    "where is_sold = 0 and id_brand_type=" + params.id_brand_type + " ";
+    params.offer = parseInt(params.offer);
+    params.warranty = parseInt(params.warranty);
+
+    var page_size = 8;
+    var offset = (params.page) ? " offset " + (params.page - 1) * page_size : "";
+
+    if(params.price){
+      var price = params.price, _price;
+      sql += "and (";
+      for(var index in price){
+        if(index > 0)
+          sql +=" or ";
+        _price = price[index].split('|');
+        sql += "(tbl_product.price>=" + _price[0] + " and tbl_product.price<=" + _price[1] + ")";
+      }
+      sql += ")";
+    }
+
+    if(params.id_brand){
+      var brands = params.id_brand;
+      sql += "and (";
+      for(var index in brands){
+        if(index > 0)
+          sql +=" or ";
+        sql += "tbl_brand.id_brand = " + brands[index];
+      }
+      sql += ")";
+    }
+
+    if(params.offer){
+        sql += " and offer > 0";
+    }
+
+    if(params.warranty){
+        sql += " and warranty = " + parseInt(params.warranty);
+    }
+    //console.log(sql + " order by id_product asc limit " + page_size + offset);
+    return sql + " order by id_product asc limit " + page_size + offset;
   };
 
   Product.hasOne('model', options.db.models.tbl_model,  {reverse: 'products'});
