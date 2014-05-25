@@ -4,12 +4,12 @@ exports.index = function(req, res){
     app.db.models.tbl_product.count({is_sold: 0}, function(err, product_count){
       app.db.models.tbl_sold.count(function(err, sold_count){
         app.db.models.tbl_customer.count(function(err, customer_count){
-          app.db.models.tbl_brand.count(function(err, brand_count){
+          app.db.models.tbl_seller.count(function(err, seller_count){
             res.render('admin/index', {
               product_count: product_count,
               sold_count: sold_count,
               customer_count: customer_count,
-              brand_count: brand_count
+              seller_count: seller_count
             });
           });
         });

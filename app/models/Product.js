@@ -6,6 +6,7 @@ module.exports = function(options){
   var Product = options.db.define(options.table, {
     id_product: Number,
     id_model: Number,
+    id_seller: Number,
     offer: Number,
     warranty: Number,
     price: Number,
@@ -132,4 +133,5 @@ module.exports = function(options){
   };
 
   Product.hasOne('model', options.db.models.tbl_model,  {reverse: 'products'});
+  Product.hasOne('seller', options.db.models.tbl_seller,  {reverse: 'products'});
 };

@@ -17,4 +17,16 @@ module.exports = function(options){
       email: options.orm.enforce.patterns.email("Invalid E-Mail")
     }
   });
+  Customer['generateCustomer'] = function(){
+    var item = {
+        customer_name: getRandomString(),
+        address: getRandomString(),
+        email: getRandomString() + "@gmail.com",
+        phone: (getRandomNumber(9 * Math.pow(10, 9), Math.pow(10, 10) - 1)).toString()
+      };
+
+    Customer.create(item, function(err){
+        if(err)throw err;
+    });
+  };
 };

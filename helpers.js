@@ -37,6 +37,19 @@ doNTimes = function(options){
   })();
 };
 
+getRandomString = function(){
+  return Math.random().toString(36).replace(/[^a-z]+/g, '');
+};
+
+transformRange = function(ranges, x){
+  var a0 = ranges[0][0];
+  var a1 = ranges[0][1];
+  var b0 = ranges[1][0];
+  var b1 = ranges[1][1];
+
+  return ((x-a0)/(a1-a0)) * (b1-b0) + b0;
+}
+
 emptyFn = function(){
 
 };

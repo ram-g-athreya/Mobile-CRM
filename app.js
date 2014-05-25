@@ -27,7 +27,7 @@ app.configure(function() {
     require('./orm')(config.db, function(){
       http.createServer(app).listen(3000, function() {
         console.log('Server Started');
-
+        //app.db.models.tbl_sold.assignSold();
       });
     });
 });
