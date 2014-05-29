@@ -24,10 +24,10 @@ app.configure(function() {
     app.basepath = __dirname;
 
     require('./routes')();
-    require('./orm')(config.db, function(){
-      http.createServer(app).listen(3000, function() {
-        console.log('Server Started');
-        //app.db.models.tbl_sold.assignSold();
-      });
+    require('./orm')(config.db, function() {
+        http.createServer(app).listen(3000, function() {
+            console.log('Server Started');
+            
+        });
     });
 });

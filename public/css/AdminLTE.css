@@ -651,7 +651,9 @@ body > .header .logo .icon {
 */
 .navbar-nav > .notifications-menu > .dropdown-menu,
 .navbar-nav > .messages-menu > .dropdown-menu,
-.navbar-nav > .tasks-menu > .dropdown-menu {
+.navbar-nav > .tasks-menu > .dropdown-menu, 
+.navbar-nav > .header-menu > .dropdown-menu
+{
   width: 280px;
   padding: 0 0 0 0!important;
   margin: 0!important;
@@ -663,7 +665,9 @@ body > .header .logo .icon {
 }
 .navbar-nav > .notifications-menu > .dropdown-menu > li.header,
 .navbar-nav > .messages-menu > .dropdown-menu > li.header,
-.navbar-nav > .tasks-menu > .dropdown-menu > li.header {
+.navbar-nav > .tasks-menu > .dropdown-menu > li.header ,
+.navbar-nav > .header-menu > .dropdown-menu > li.header
+{
   -webkit-border-top-left-radius: 4px;
   -webkit-border-top-right-radius: 4px;
   -webkit-border-bottom-right-radius: 0;
@@ -684,7 +688,9 @@ body > .header .logo .icon {
 }
 .navbar-nav > .notifications-menu > .dropdown-menu > li.header:after,
 .navbar-nav > .messages-menu > .dropdown-menu > li.header:after,
-.navbar-nav > .tasks-menu > .dropdown-menu > li.header:after {
+.navbar-nav > .tasks-menu > .dropdown-menu > li.header:after, 
+.navbar-nav > .header-menu > .dropdown-menu > li.header:after 
+{
   bottom: 100%;
   left: 92%;
   border: solid transparent;
@@ -698,9 +704,19 @@ body > .header .logo .icon {
   border-width: 7px;
   margin-left: -7px;
 }
+.navbar-nav > .header-menu > .dropdown-menu > li.header:after {
+    left: 10%;
+}
+@media (max-width: 480px) {
+  .navbar-nav > .header-menu > .dropdown-menu > li.header:after {
+    display: none;
+  }
+}
 .navbar-nav > .notifications-menu > .dropdown-menu > li.footer > a,
 .navbar-nav > .messages-menu > .dropdown-menu > li.footer > a,
-.navbar-nav > .tasks-menu > .dropdown-menu > li.footer > a {
+.navbar-nav > .tasks-menu > .dropdown-menu > li.footer > a,
+.navbar-nav > .header-menu > .dropdown-menu > li.footer > a
+{
   -webkit-border-top-left-radius: 0px;
   -webkit-border-top-right-radius: 0px;
   -webkit-border-bottom-right-radius: 4px;
@@ -722,14 +738,18 @@ body > .header .logo .icon {
 }
 .navbar-nav > .notifications-menu > .dropdown-menu > li.footer > a:hover,
 .navbar-nav > .messages-menu > .dropdown-menu > li.footer > a:hover,
-.navbar-nav > .tasks-menu > .dropdown-menu > li.footer > a:hover {
+.navbar-nav > .tasks-menu > .dropdown-menu > li.footer > a:hover, 
+.navbar-nav > .header-menu > .dropdown-menu > li.footer > a:hover 
+{
   background: #f4f4f4;
   text-decoration: none;
   font-weight: normal;
 }
 .navbar-nav > .notifications-menu > .dropdown-menu > li .menu,
 .navbar-nav > .messages-menu > .dropdown-menu > li .menu,
-.navbar-nav > .tasks-menu > .dropdown-menu > li .menu {
+.navbar-nav > .tasks-menu > .dropdown-menu > li .menu,
+.navbar-nav > .header-menu > .dropdown-menu > li .menu 
+{
   margin: 0;
   padding: 0;
   list-style: none;
@@ -737,7 +757,9 @@ body > .header .logo .icon {
 }
 .navbar-nav > .notifications-menu > .dropdown-menu > li .menu > li > a,
 .navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a,
-.navbar-nav > .tasks-menu > .dropdown-menu > li .menu > li > a {
+.navbar-nav > .tasks-menu > .dropdown-menu > li .menu > li > a, 
+.navbar-nav > .header-menu > .dropdown-menu > li .menu > li > a 
+{
   display: block;
   white-space: nowrap;
   /* Prevent text from breaking */
@@ -746,7 +768,9 @@ body > .header .logo .icon {
 }
 .navbar-nav > .notifications-menu > .dropdown-menu > li .menu > li > a:hover,
 .navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a:hover,
-.navbar-nav > .tasks-menu > .dropdown-menu > li .menu > li > a:hover {
+.navbar-nav > .tasks-menu > .dropdown-menu > li .menu > li > a:hover
+.navbar-nav > .header-menu > .dropdown-menu > li .menu > li > a:hover,
+{
   background: #f6f6f6;
   text-decoration: none;
 }

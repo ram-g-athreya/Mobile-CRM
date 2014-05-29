@@ -34,6 +34,27 @@ exports.earphonesIndex = function(req, res){
     render: 'site/products/earphones'
   });
 };
+exports.watchesIndex = function(req, res){
+  productsIndex({
+    id_brand_type: 3,
+    res: res,
+    render: 'site/products/watches'
+  });
+};
+exports.jeansIndex = function(req, res){
+  productsIndex({
+    id_brand_type: 4,
+    res: res,
+    render: 'site/products/jeans'
+  });
+};
+exports.tShirtsIndex = function(req, res){
+  productsIndex({
+    id_brand_type: 5,
+    res: res,
+    render: 'site/products/t-shirts'
+  });
+};
 
 
 exports.filterProducts = function(req, res){

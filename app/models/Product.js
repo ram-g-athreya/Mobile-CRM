@@ -29,6 +29,13 @@ module.exports = function(options){
             cb({name: [brand.brand_name, model.model_name].join(' '), price: me.price});
           });
         });
+      },
+      getBrandType: function(cb){
+        this.getModel(function(err, model){
+          model.getBrand(function(err, brand){
+            cb(brand.id_brand_type);
+          });
+        });
       }
     }
   });
@@ -55,32 +62,38 @@ module.exports = function(options){
   };
 
   Product['generateProduct'] = function(opts){
-
     function process(min, max){
       var id_model = getRandomNumber(min, max);
       var warranty = Math.random() >= 0.7;
       var offer = (Math.random()>=0.9)?getRandomItem(offer_range):0;
-
       options.db.models.tbl_model.find({id_model: id_model}, function(err, model){
+        if(err)throw err;
         model = model[0];
         var selling_price = parseInt(model.price - model.price * getRandomNumber(min, max) / 100);
         var final_price = parseInt((1 - offer / 100) * selling_price);
-        Product.create([{
+        Product.create({
           id_model: id_model,
           warranty: warranty,
           offer: offer,
           price: selling_price,
           final_price: final_price,
           is_sold: 0
-        }], function(){});
+        }, function(err, item){
+          if(err)throw err;
+          console.log(item.id_product);
+          if(opts && opts.cb)
+            opts.cb(opts.index + 1);
+        });
       });
     }
 
-    if(opts){
+    if(opts && opts.min && opts.max){
       process(opts.min, opts.max);
     }
     else{
         options.db.models.tbl_model.count(function(err, count){
+          if(err)throw err;
+          count = parseInt(count);
           process(1, count);
         });
     }

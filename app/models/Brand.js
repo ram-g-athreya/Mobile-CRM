@@ -14,4 +14,9 @@ module.exports = function(options){
       }
     }
   });
+  Brand['affinities'] = [
+  [1, 2],
+  [3],
+  [4, 5]
+  ];
 };

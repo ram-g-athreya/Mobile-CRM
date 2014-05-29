@@ -12,7 +12,9 @@ module.exports = function() {
     // Product Category wise URLs
     app.get('/smartphones', products.smartphonesIndex);
     app.get('/earphones', products.earphonesIndex);
-
+    app.get('/watches', products.watchesIndex);
+    app.get('/jeans', products.jeansIndex);
+    app.get('/t-shirts', products.tShirtsIndex);
 
     app.get('/', products.smartphonesIndex);
 

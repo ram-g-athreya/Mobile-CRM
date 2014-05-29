@@ -9,6 +9,25 @@ mixin header(options)
           span(class="icon-bar")
           span(class="icon-bar")
       - }
+      div(class="navbar-left")
+        ul(class="nav navbar-nav")
+            li(class="dropdown header-menu")
+                a(href="#" class="dropdown-toggle" data-toggle="dropdown")
+                    span Products
+                ul(class="dropdown-menu")
+                    li(class="header")
+                        a(href="/smartphones") Smartphones
+                    li(class="header")
+                        a(href="/earphones") Earphones
+                    li(class="header")
+                        a(href="/watches") Watches
+                    li(class="header")
+                        a(href="/jeans") Jeans
+                    li(class="header")
+                        a(href="/t-shirts") T-Shirts
+
+
+
       - if(options && !options.hide_login){
         div(class="navbar-right")
           ul(class="nav navbar-nav")
