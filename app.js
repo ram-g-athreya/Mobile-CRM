@@ -27,7 +27,21 @@ app.configure(function() {
     require('./orm')(config.db, function() {
         http.createServer(app).listen(3000, function() {
             console.log('Server Started');
+
+
+            var exec = require('child_process').exec;
+
+            function execute(command, callback) {
+                exec(command, function(error, stdout, stderr) {
+                    if(error)throw error;
+                    callback(stdout);
+                });
+            }
             
+            execute('Rscript r/findAssocations.R', function(stdout){
+                console.log(stdout);
+            });
+
         });
     });
 });
