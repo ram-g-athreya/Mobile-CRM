@@ -52,9 +52,11 @@ rules_subset <- as(rules_subset, "matrix");
 
 #Cleaning up & splitting LHS & RHS rules
 y <- rules_subset[, 1];
-y <- mapply(gsub, "\\{", "\'", y);
-y <- mapply(gsub, "\\}", "\'", y);
+
+y <- mapply(gsub, "\\{", "", y);
+y <- mapply(gsub, "\\}", "", y);
 y <- mapply(gsub, "=1", "", y);
+
 y <- colsplit(y, split=" => ", c("lhs", "rhs"));
 
 rules_subset <- cbind(y, rules_subset[, -1]);

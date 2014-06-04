@@ -1,0 +1,17 @@
+doctype html
+html(lang="en")
+  head
+    title Mobile CRM
+    include /templates/assets.jade
+    include /mixins/header.jade
+    script(src="/js/custom/recommend/RecommendController.js")
+    script(type="text/javascript").
+        recommendController();
+
+  body(class='skin-blue')
+    +header({show_sidebar: true, hide_login: true})
+    div(class="wrapper row-offcanvas row-offcanvas-left")
+      aside(class="left-side sidebar-offcanvas")
+      aside(class="right-side")
+        section(class="content")
+            include /templates/admin/recommend.jade

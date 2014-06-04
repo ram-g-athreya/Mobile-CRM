@@ -30,4 +30,6 @@ module.exports = function() {
     //Admin URLs
     app.get('/admin', admin.index);
     app.get('/admin/sell', admin.sell);
+    app.get('/admin/recommend', admin.recommend);
+    app.post('/admin/recommend', admin.recommend);
 };

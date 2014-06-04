@@ -1,6 +1,6 @@
 function productsIndex(options){
   app.db.driver.execQuery(app.db.models.tbl_product.generateFilterParams({id_brand_type: options.id_brand_type}), function(err, products){
-    options.res.render(options.render, {data: products, id_brand_type: options.id_brand_type});
+    options.res.render(options.render, {data: products, id_brand_type: options.id_brand_type, user: options.req.user});
   });
 };
 
@@ -24,35 +24,40 @@ exports.smartphonesIndex = function(req, res){
   productsIndex({
     id_brand_type: 1,
     res: res,
-    render: 'site/products/smartphones'
+    render: 'site/products/smartphones',
+    req: req
   });
 };
 exports.earphonesIndex = function(req, res){
   productsIndex({
     id_brand_type: 2,
     res: res,
-    render: 'site/products/earphones'
+    render: 'site/products/earphones',
+    req: req
   });
 };
 exports.watchesIndex = function(req, res){
   productsIndex({
     id_brand_type: 3,
     res: res,
-    render: 'site/products/watches'
+    render: 'site/products/watches',
+    req: req
   });
 };
 exports.jeansIndex = function(req, res){
   productsIndex({
     id_brand_type: 4,
     res: res,
-    render: 'site/products/jeans'
+    render: 'site/products/jeans',
+    req: req
   });
 };
 exports.tShirtsIndex = function(req, res){
   productsIndex({
     id_brand_type: 5,
     res: res,
-    render: 'site/products/t-shirts'
+    render: 'site/products/t-shirts',
+    req: req
   });
 };
 
@@ -63,7 +68,7 @@ exports.filterProducts = function(req, res){
     res: res,
     render: 'templates/products/listings'
   });
-}
+};
 
 exports.productDetails = function(req, res){
   var id_product = req.params.id;
@@ -72,7 +77,8 @@ exports.productDetails = function(req, res){
     product.getProductDetails(function(details){
         var data = {
           product: product,
-          details: details
+          details: details,
+          user: req.user
         };
         res.render('site/products/details', data);
     });
