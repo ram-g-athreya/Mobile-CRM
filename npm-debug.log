@@ -1,0 +1,95 @@
+info it worked if it ends with ok
+verbose cli [ 'node', '/usr/bin/npm', 'install' ]
+info using npm@1.1.4
+info using node@v0.6.12
+verbose config file /home/vagrant/.npmrc
+verbose config file /usr/etc/npmrc
+verbose config file /usr/share/npm/npmrc
+verbose caching /home/vagrant/package.json
+verbose loadDefaults mobile-crm@0.0.1
+verbose readDependencies: using package.json deps
+verbose where, deps [ '/home/vagrant',
+verbose where, deps   [ 'express',
+verbose where, deps     'jade',
+verbose where, deps     'connect',
+verbose where, deps     'request',
+verbose where, deps     'mysql',
+verbose where, deps     'orm',
+verbose where, deps     'passport',
+verbose where, deps     'passport-local',
+verbose where, deps     'mailgun' ] ]
+verbose from cache /home/vagrant/package.json
+info preinstall mobile-crm@0.0.1
+verbose caching /home/vagrant/node_modules/jade/package.json
+verbose loadDefaults jade@1.3.1
+verbose caching /home/vagrant/node_modules/express/package.json
+verbose loadDefaults express@3.4.0
+verbose caching /home/vagrant/node_modules/passport/package.json
+verbose loadDefaults passport@0.2.0
+verbose caching /home/vagrant/node_modules/connect/package.json
+verbose loadDefaults connect@2.16.2
+verbose caching /home/vagrant/node_modules/mysql/package.json
+verbose loadDefaults mysql@2.0.0-alpha3
+verbose caching /home/vagrant/node_modules/mailgun/package.json
+verbose loadDefaults mailgun@0.4.2
+verbose caching /home/vagrant/node_modules/passport-local/package.json
+verbose loadDefaults passport-local@1.0.0
+verbose caching /home/vagrant/node_modules/orm/package.json
+verbose loadDefaults orm@2.1.10
+verbose caching /home/vagrant/node_modules/request/package.json
+verbose loadDefaults request@2.35.0
+verbose from cache /home/vagrant/package.json
+verbose readDependencies: using package.json deps
+verbose from cache /home/vagrant/node_modules/connect/package.json
+verbose from cache /home/vagrant/node_modules/express/package.json
+verbose from cache /home/vagrant/node_modules/jade/package.json
+verbose from cache /home/vagrant/node_modules/mailgun/package.json
+verbose from cache /home/vagrant/node_modules/mysql/package.json
+verbose from cache /home/vagrant/node_modules/orm/package.json
+verbose from cache /home/vagrant/node_modules/passport/package.json
+verbose from cache /home/vagrant/node_modules/passport-local/package.json
+verbose from cache /home/vagrant/node_modules/request/package.json
+verbose already installed in /home/vagrant skipping request@2.x
+verbose cache add [ 'mysql@0.9.6', null ]
+silly cache add: name, spec, args [ undefined, 'mysql@0.9.6', [ 'mysql@0.9.6', null ] ]
+verbose parsed url { pathname: 'mysql@0.9.6',
+verbose parsed url   path: 'mysql@0.9.6',
+verbose parsed url   href: 'mysql@0.9.6' }
+silly cache add: name, spec, args [ 'mysql', '0.9.6', [ 'mysql', '0.9.6' ] ]
+verbose parsed url { pathname: '0.9.6', path: '0.9.6', href: '0.9.6' }
+verbose addNamed [ 'mysql', '0.9.6' ]
+verbose addNamed [ '0.9.6', '0.9.6' ]
+verbose already installed in /home/vagrant skipping orm@2.1.10
+verbose raw, before any munging mysql/0.9.6
+verbose url resolving [ 'https://registry.npmjs.org/', './mysql/0.9.6' ]
+verbose url resolved https://registry.npmjs.org/mysql/0.9.6
+http GET https://registry.npmjs.org/mysql/0.9.6
+verbose already installed in /home/vagrant skipping passport@0.2.0
+verbose already installed in /home/vagrant skipping passport-local@1.0.0
+verbose already installed in /home/vagrant skipping mailgun@0.4.2
+verbose already installed in /home/vagrant skipping express@3.4.0
+verbose already installed in /home/vagrant skipping jade@*
+verbose already installed in /home/vagrant skipping connect@*
+ERR! Error: failed to fetch from registry: mysql/0.9.6
+ERR!     at /usr/share/npm/lib/utils/npm-registry-client/get.js:139:12
+ERR!     at cb (/usr/share/npm/lib/utils/npm-registry-client/request.js:31:9)
+ERR!     at Request._callback (/usr/share/npm/lib/utils/npm-registry-client/request.js:136:18)
+ERR!     at Request.callback (/usr/lib/nodejs/request/main.js:119:22)
+ERR!     at Request.<anonymous> (/usr/lib/nodejs/request/main.js:212:58)
+ERR!     at Request.emit (events.js:88:20)
+ERR!     at ClientRequest.<anonymous> (/usr/lib/nodejs/request/main.js:412:12)
+ERR!     at ClientRequest.emit (events.js:67:17)
+ERR!     at HTTPParser.onIncoming (http.js:1261:11)
+ERR!     at HTTPParser.onHeadersComplete (http.js:102:31)
+ERR! You may report this log at:
+ERR!     <http://bugs.debian.org/npm>
+ERR! or use
+ERR!     reportbug --attach /home/vagrant/npm-debug.log npm
+ERR! 
+ERR! System Linux 3.2.0-23-generic-pae
+ERR! command "node" "/usr/bin/npm" "install"
+ERR! cwd /home/vagrant
+ERR! node -v v0.6.12
+ERR! npm -v 1.1.4
+ERR! message failed to fetch from registry: mysql/0.9.6
+verbose exit [ 1, true ]

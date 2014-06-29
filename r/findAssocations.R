@@ -46,6 +46,8 @@ rules_subset <- sort(
   by = "support"
 );
 
+inspect(rules_subset);
+
 rules_subset <- as(rules_subset, "data.frame");
 rownames(rules_subset) <- 1:nrow(rules_subset);
 rules_subset <- as(rules_subset, "matrix");

@@ -59,7 +59,6 @@ module.exports = function(options) {
             var seller_index;
             //Change to each later so that it is easier to process
             options.db.models.tbl_product.find({}, function(err, products) {
-                var index = 0;
                 (function process(index) {
                     if (index < products.length) {
                         seller_index = getSellerIndex();

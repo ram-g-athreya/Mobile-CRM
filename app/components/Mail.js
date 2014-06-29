@@ -7,7 +7,7 @@ var sendMail = function(options){
       options.subject,
       options.text
   );
-}
+};
 
 module.exports = {
   sendMail: sendMail
