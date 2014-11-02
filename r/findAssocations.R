@@ -6,6 +6,7 @@
 rm(list = setdiff(ls(), lsf.str()));
 setwd('~/Sites/Mobile-CRM/r');
 
+library("Matrix");
 library("arules");
 library("reshape");
 library("arulesViz");
@@ -13,7 +14,7 @@ library("arulesSequences");
 library('arulesNBMiner');
 
 source("mysql.R");
-#dbSendQuery(db, "truncate table tbl_sold_rules");
+dbSendQuery(db, "truncate table tbl_sold_rules");
 
 #Getting sold data from DB
 rs = dbSendQuery(db, "call getSoldDataBreakup()");
@@ -88,5 +89,5 @@ y <- colsplit(y, split=" => ", c("lhs", "rhs"));
 rules_subset <- cbind(y, rules_subset[, -1]);
 
 #Writing to database
-#dbWriteTable(db, "tbl_sold_rules", rules_subset, append = T, row.names = F);
+dbWriteTable(db, "tbl_sold_rules", rules_subset, append = T, row.names = F);
 dbDisconnect(db);
