@@ -1,5 +1,5 @@
 var config = {
     port: 3000,
-    db: "mysql://root:@localhost/mobile_crm"
+    db: "mysql://root:root@localhost/mobile_crm"
 };
 module.exports = config;
