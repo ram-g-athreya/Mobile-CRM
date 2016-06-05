@@ -1,3 +1,4 @@
+;
 function productsIndex(options){
   app.db.driver.execQuery(app.db.models.tbl_product.generateFilterParams({id_brand_type: options.id_brand_type}), function(err, products){
     options.res.render(options.render, {data: products, id_brand_type: options.id_brand_type, user: options.req.user});

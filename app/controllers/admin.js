@@ -1,4 +1,4 @@
-
+;
 exports.index = function(req, res) {
     if (req.user) {
         app.db.models.tbl_product.count({is_sold: 0}, function(err, product_count) {
