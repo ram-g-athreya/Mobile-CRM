@@ -1,23 +1,29 @@
 {
-    "name": "mobile-crm",
-    "version": "0.0.1",
-    "private": true,
-    "scripts": {
-        "start": "node app"
-    },
-    "dependencies": {
-        "express": "3.4.0",
-        "jade": "*",
-        "connect": "*",
-        "request": "2.x",
-        "mysql" : "2.10.2",
-        "orm" : "2.1.10",
-        "passport": "0.2.0",
-        "passport-local": "1.0.0",
-        "mailgun": "0.4.2"
-    },
-    "engines": {
-        "node": "0.10.x",
-        "npm": "1.2.x"
-    }
+  "name": "mobile-crm",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "nodejs app",
+    "test": "./node_modules/mocha/bin/mocha --reporter mochawesome"
+  },
+  "dependencies": {
+    "express": "3.4.0",
+    "jade": "*",
+    "connect": "*",
+    "request": "2.x",
+    "mysql": "2.10.2",
+    "orm": "2.1.10",
+    "passport": "0.2.0",
+    "passport-local": "1.0.0",
+    "mailgun": "0.4.2"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  },
+  "devDependencies": {
+    "mocha": "~2.5.3",
+    "chai": "~3.5.0",
+    "mochawesome": "~1.4.0"
+  }
 }

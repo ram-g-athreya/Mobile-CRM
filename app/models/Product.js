@@ -80,7 +80,6 @@ module.exports = function(options){
           is_sold: 0
         }, function(err, item){
           if(err)throw err;
-          console.log(item.id_product);
           if(opts && opts.cb)
             opts.cb(opts.index + 1);
         });
@@ -141,10 +140,11 @@ module.exports = function(options){
     if(params.warranty){
         sql += " and warranty = " + parseInt(params.warranty);
     }
-    //console.log(sql + " order by id_product asc limit " + page_size + offset);
     return sql + " order by id_product asc limit " + page_size + offset;
   };
 
   Product.hasOne('model', options.db.models.tbl_model,  {reverse: 'products'});
   Product.hasOne('seller', options.db.models.tbl_seller,  {reverse: 'products'});
+
+  return Product;
 };

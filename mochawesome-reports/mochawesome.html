@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mochawesome Report Card</title>
+    
+    <link rel="stylesheet" href="css/mochawesome.css">
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="report-info-cnt">
+          <h1 class="report-title">Mobile-CRM</h1>
+          <h3 class="report-date">Sunday, July 24 2016, 04:15pm</h3>
+        </div>
+        <div class="nav-right">
+          <div class="quick-summary-cnt">
+              <ul class="list-unstyled quick-summary">
+                <li class="qs-item summary-duration" title="Duration">685<span>MS</span></li>
+                <li class="qs-item summary-suites" title="Suites">2</li>
+                <li class="qs-item summary-tests" title="Tests">6</li>
+                <li class="qs-item summary-passes" title="Passed" data-filter="passed">6</li>
+                <li class="qs-item summary-failures" title="Failed" data-filter="failed">0</li>
+                <li class="qs-item summary-pending" title="Pending" data-filter="pending">0</li>
+              </ul>          </div>
+          <button class="nav-menu-btn open-menu"><i class="icon-menu"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Report Summary -->
+    <div class="summary">
+      <div class="container">
+          <div class="row">
+            <div class="summary-col summary-duration">
+              <h1 class="summary-count">685<span>MS</span></h1>
+              <h4 class="summary-label">MS</h4>
+            </div>
+            <div class="summary-col summary-suites" title="Suites">
+              <h1 class="summary-count">2</h1>
+              <h4 class="summary-label">Suites</h4>
+            </div>
+            <div class="summary-col summary-tests" title="Tests">
+              <h1 class="summary-count">6</h1>
+              <h4 class="summary-label">Tests</h4>
+            </div>
+            <div class="summary-col summary-passes" data-filter="passed" title="Passed">
+              <h1 class="summary-count">6</h1>
+              <h4 class="summary-label">Passed</h4>
+            </div>
+            <div class="summary-col summary-failures" data-filter="failed" title="Failed">
+              <h1 class="summary-count">0</h1>
+              <h4 class="summary-label">Failed</h4>
+            </div>
+            <div class="summary-col summary-pending" data-filter="pending" title="Pending">
+              <h1 class="summary-count">0</h1>
+              <h4 class="summary-label">Pending</h4>
+            </div>
+          </div>      </div>
+    </div>
+    <div class="statusbar">
+      <div class="container">
+          <div class="row">
+            <div class="status-item status-item-pending-pct">0% Pending</div>
+            <div class="status-item status-item-passing-pct success">100% Passing</div>
+          </div>      </div>
+    </div>
+
+    <!-- Suites -->
+    <div class="details container">
+            <section class="suite-wrap">
+          <div id="3ce445a7-7f5c-4659-a4d7-8e25f953ddfa" class="suite has-suites">
+            <h3 class="suite-title">Product Page</h3>
+            <h5 class="suite-filename">/test/product.js</h5>
+        
+              <section class="suite-wrap">
+          <div id="b978fb9a-f45a-4175-ae60-f890e4f3732c" class="suite has-tests has-passed">
+            <h3 class="suite-title">Check Product Model</h3>
+            <h5 class="suite-filename">/test/product.js</h5>
+            <!-- Suite Chart -->
+            <div class="suite-chart-wrap">
+              <canvas id="b978fb9a-f45a-4175-ae60-f890e4f3732c" class="suite-chart" width="50" height="50" data-total-passes="6" data-total-failures="0" data-total-pending="0" data-total-skipped="0"></canvas>
+            </div>
+            <div class="suite-data-wrap">
+              <!-- Suite Summary -->
+              <ul class="suite-summary list-unstyled">
+                <li class="suite-summary-item duration">23 ms</li>
+                <li class="suite-summary-item tests">6</li>
+                <li class="suite-summary-item passed">6</li>
+                <li class="suite-summary-item failed">0</li>
+                <li class="suite-summary-item pending">0</li>
+              </ul>
+              <!-- Test Info -->
+              <div class="suite-test-wrap">
+                <div class="suite-test-header" data-toggle="collapse" data-target="#b978fb9a-f45a-4175-ae60-f890e4f3732c-test-list">
+                  <h4 class="suite-test-header-title">Tests</h4>
+                </div>
+                <div id="b978fb9a-f45a-4175-ae60-f890e4f3732c-test-list" class="list-group test-list collapse in">
+                    <div id="0362556a-e0ac-4aa7-82d1-dae7bd554fa7" class="list-group-item test passed">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              Find Product Details
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#0362556a-e0ac-4aa7-82d1-dae7bd554fa7 > .test-code.collapse">Code</button>
+              <span class="test-duration fast">22 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small">ProductModel.find({<br>    id_product: <span class="hljs-number">1038</span><br>}, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, results</span>) </span>{<br>    expect(err).to.equal(<span class="hljs-literal">null</span>);<br>    results[<span class="hljs-number">0</span>].getProductDetails(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>{<br>        product = results[<span class="hljs-number">0</span>];<br>        product_details = data;<br>        done();<br>    });<br>});</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="929da643-db9f-491d-a895-7c9359e98f1e" class="list-group-item test passed">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              Check Product Name
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#929da643-db9f-491d-a895-7c9359e98f1e > .test-code.collapse">Code</button>
+              <span class="test-duration fast">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small">expect(product_details.name).to.equal(<span class="hljs-string">"HTC Desire 210"</span>);<br>done();</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="8c3034db-7d95-4b36-9feb-8112e0a44eea" class="list-group-item test passed">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              Check Product Price
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#8c3034db-7d95-4b36-9feb-8112e0a44eea > .test-code.collapse">Code</button>
+              <span class="test-duration fast">1 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small">expect(product.price).to.equal(6689);<br>done();</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="6cc8fa64-2150-4c37-886c-6f9bc6960e34" class="list-group-item test passed">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              Check Warranty
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#6cc8fa64-2150-4c37-886c-6f9bc6960e34 > .test-code.collapse">Code</button>
+              <span class="test-duration fast">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small">expect(product.warranty).to.equal(1);<br>done();</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="5b596108-9b0e-4b77-9e9f-4b3fcadee410" class="list-group-item test passed">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              Check Offer
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#5b596108-9b0e-4b77-9e9f-4b3fcadee410 > .test-code.collapse">Code</button>
+              <span class="test-duration fast">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small">expect(product.offer).to.equal(5);<br>done();</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>            <div id="092eb9ff-4242-4b0e-b54e-99331dc73993" class="list-group-item test passed">
+          <!-- Test Heading -->
+          <div class="test-heading">
+            <h4 class="test-title">
+              <span class="text-muted hidden"> it </span>
+              Check Final Price
+            </h4>
+            <div class="pull-right">
+              <button class="btn btn-link btn-sm toggle-btn toggle-code collapsed" data-toggle="collapse" data-target="#092eb9ff-4242-4b0e-b54e-99331dc73993 > .test-code.collapse">Code</button>
+              <span class="test-duration fast">0 ms</span>
+            </div>
+          </div>
+          <!-- Test Errors -->
+          <!-- Test Code -->
+          <div class="test-code collapse">
+            <pre><code class="hljs javascript small"><span class="hljs-keyword">var</span> computed_final_price = <span class="hljs-built_in">Math</span>.floor(product.price - product.price * product.offer / <span class="hljs-number">100</span>);<br>expect(computed_final_price).to.equal(product.final_price);<br>done();</code></pre>
+          </div>
+          <!-- Test Error Stack -->
+        </div>        </div>
+              </div>
+            </div>
+        
+        
+          </div>
+        </section>
+        
+          </div>
+        </section>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>Report generated by <a href="http://adamgruber.github.io/mochawesome/" target="_blank">mochawesome</a>.<br>Designed and built by <a href="https://github.com/adamgruber" target="_blank">adamgruber</a>. &copy;2016.</p>
+      </div>
+    </footer>
+
+    <!-- Nav Menu -->
+    <div class="nav-menu-wrap">
+      <div class="menu-overlay close-menu"></div>
+      <nav class="menu">
+        <button class="nav-menu-btn close-menu"><i class="icon-failed"></i></button>
+        <ul class="list-unstyled main-menu">
+                <li class="nav-menu-item">
+                <a href="#3ce445a7-7f5c-4659-a4d7-8e25f953ddfa" class="nav-menu-item-link">Product Page</a>
+                  <ul class="list-unstyled sub-menu">
+                    <li class="nav-menu-item">
+                <a href="#b978fb9a-f45a-4175-ae60-f890e4f3732c" class="nav-menu-item-link has-passes">Check Product Model</a>
+            </li>
+                  </ul>
+            </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/vendor.js"></script>
+    <script src="js/mochawesome.js"></script>
+  </body>
+</html>

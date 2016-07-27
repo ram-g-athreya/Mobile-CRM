@@ -75,7 +75,7 @@ exports.productDetails = function(req, res){
   var id_product = req.params.id;
   app.db.models.tbl_product.find({id_product: id_product}, function(err, product){
     product = product[0];
-    product.getProductDetails(function(details){
+    product.getProductDetails(function(details) {
         var data = {
           product: product,
           details: details,
