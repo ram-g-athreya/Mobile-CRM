@@ -24,6 +24,13 @@
   "devDependencies": {
     "mocha": "~2.5.3",
     "chai": "~3.5.0",
-    "mochawesome": "~1.4.0"
+    "mochawesome": "~1.4.0",
+    "jshint": "~2.9.2",
+    "jshint-html-reporter": "~0.2.4",
+    "grunt": "~1.0.1",
+    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-mocha-browser": "0.0.5",
+    "grunt-mocha": "~1.0.2",
+    "grunt-mocha-test": "~0.12.7"
   }
 }

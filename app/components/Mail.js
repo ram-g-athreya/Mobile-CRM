@@ -1,4 +1,4 @@
-var mailgun = require('mailgun')
+var mailgun = require('mailgun');
 var mg = new mailgun.Mailgun('key-7n88ceijgdrsmqanzdh-egoi107dl501');
 var sendMail = function(options){
   mg.sendText(

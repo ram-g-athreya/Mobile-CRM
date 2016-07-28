@@ -1,6 +1,5 @@
-;
 module.exports = function(options) {
-    var SoldRules = options.db.define(options.table, {
+    options.db.define(options.table, {
         id_sold_rule: Number,
         lhs: String,
         rhs: String,

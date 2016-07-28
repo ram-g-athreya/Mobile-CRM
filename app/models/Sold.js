@@ -5,15 +5,14 @@ module.exports = function(options) {
         id_product: Number
     }, {
         id: 'id_sold',
-        methods: {
-        }
+        methods: {}
     });
 
     var warranty_weightage = 0.1;
     var affinity_weightage = 0.1;
     var trusted_seller_weightage = 0.1;
 
-    Sold['assignSold'] = function(opts) {
+    Sold.assignSold = function(opts) {
         options.db.models.tbl_product.get(opts.index, function(err, product) {
             product.getModel(function(err, model) {
                 var weightage = (product.final_price - model.price) / model.price;
@@ -45,14 +44,20 @@ module.exports = function(options) {
                                 //Computing seller rating
                                 var seller = options.db.models.tbl_seller;
                                 var count = seller.product_count[parseInt(product.id_seller)];
-                                var rating = transformRange([[seller.product_count_min, seller.product_count_max], [0, 1]], count)
+                                var rating = transformRange([
+                                    [seller.product_count_min, seller.product_count_max],
+                                    [0, 1]
+                                ], count);
 
                                 //-66% to 30%
                                 weightage -= rating * trusted_seller_weightage;
                                 //console.log("overall weightage is " + weightage);
 
                                 weightage = parseInt(weightage * 100);
-                                weightage = 1 - transformRange([[-66, 30], [0, 1]], weightage);
+                                weightage = 1 - transformRange([
+                                    [-66, 30],
+                                    [0, 1]
+                                ], weightage);
 
                                 //console.log('FINAL WEIGHTAGE IS ' + weightage, weightage >= Math.random());
                                 if (weightage >= Math.random()) {
@@ -60,17 +65,20 @@ module.exports = function(options) {
                                         id_customer: random_customer,
                                         id_product: product.id_product
                                     };
-                                    product.save({is_sold: 1});
+                                    product.save({
+                                        is_sold: 1
+                                    });
                                     options.db.models.tbl_sold.create(sold_item, function() {
                                         console.log(product.id_product, "SOLD");
-                                        if (opts.cb)
+                                        if (opts.cb) {
                                             opts.cb(++opts.index);
+                                        }
                                     });
-                                }
-                                else {
+                                } else {
                                     console.log(product.id_product, "NOT SOLD");
-                                    if (opts.cb)
+                                    if (opts.cb) {
                                         opts.cb(++opts.index);
+                                    }
                                 }
                             }
                         });

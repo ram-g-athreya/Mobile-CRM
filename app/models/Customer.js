@@ -11,7 +11,8 @@ module.exports = function(options) {
             getAffinity: function(opts) {
                 var affinities = options.db.models.tbl_brand.affinities;
                 var association_array;
-                var already_bought = false, related_bought = false;
+                var already_bought = false,
+                    related_bought = false;
 
                 for (var index in affinities) {
                     if (affinities[index].indexOf(opts.id_brand_type) >= 0) {
@@ -21,34 +22,34 @@ module.exports = function(options) {
                 }
 
                 this.getSold(function(err, purchases) {
-                    if (err)
+                    if (err) {
                         throw err;
+                    }
 
                     if (purchases) {
                         (function process(index) {
                             if (index < purchases.length) {
-                                options.db.models.tbl_product.find({id_product: purchases[index].id_product}, function(err, product) {
+                                options.db.models.tbl_product.find({
+                                    id_product: purchases[index].id_product
+                                }, function(err, product) {
                                     product = product[0];
                                     product.getBrandType(function(id_brand_type) {
-                                        if (id_brand_type == opts.id_brand_type) {
+                                        if (id_brand_type === opts.id_brand_type) {
                                             already_bought = true;
-                                        }
-                                        else if (association_array.indexOf(id_brand_type) >= 0) {
+                                        } else if (association_array.indexOf(id_brand_type) >= 0) {
                                             related_bought = true;
                                         }
                                         process(++index);
                                     });
                                 });
-                            }
-                            else {
+                            } else {
                                 opts.cb({
                                     already_bought: already_bought,
                                     related_bought: related_bought
                                 });
                             }
                         })(0);
-                    }
-                    else {
+                    } else {
                         opts.cb({
                             already_bought: already_bought,
                             related_bought: related_bought
@@ -64,7 +65,7 @@ module.exports = function(options) {
             email: options.orm.enforce.patterns.email("Invalid E-Mail")
         }
     });
-    Customer['generateCustomer'] = function() {
+    Customer.generateCustomer = function() {
         var item = {
             customer_name: getRandomString(),
             address: getRandomString(),
@@ -72,11 +73,18 @@ module.exports = function(options) {
             phone: (getRandomNumber(9 * Math.pow(10, 9), Math.pow(10, 10) - 1)).toString()
         };
         Customer.create(item, function(err, item) {
-            if (err)
+            if (err) {
                 throw err;
+            }
             console.log(item.id_customer);
         });
     };
 
-    Customer.hasMany('sold', {id_sold: Number, id_product: Number}, {reverse: 'customer', mergeTable: 'tbl_sold'});
+    Customer.hasMany('sold', {
+        id_sold: Number,
+        id_product: Number
+    }, {
+        reverse: 'customer',
+        mergeTable: 'tbl_sold'
+    });
 };

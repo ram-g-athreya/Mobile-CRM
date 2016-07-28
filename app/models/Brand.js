@@ -8,13 +8,15 @@ module.exports = function(options){
     methods: {
       getAllModels: function(callback){
         options.db.models.model.find({id_brand: this.id_brand}, function(err, data){
-            if(err)throw err;
+            if(err) {
+              throw err;
+            }
             callback(data);
         });
       }
     }
   });
-  Brand['affinities'] = [
+  Brand.affinities = [
   [1, 2],
   [3],
   [4, 5]

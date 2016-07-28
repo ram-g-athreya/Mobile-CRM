@@ -8,34 +8,40 @@ module.exports = function(options) {
     }, {
         id: 'id_seller',
         methods: {
-            getRating: function(cb) {
-                var me = this;
+            getRating: function() {
 
             }
         }
     });
 
-    Seller['setProductCount'] = function(cb) {
+    Seller.setProductCount = function(cb) {
         options.db.models.tbl_product.aggregate(['id_seller']).count().groupBy('id_seller').order('id_seller').get(function(err, data) {
-            if (err)
+            if (err) {
                 throw err;
-            var max = 0, min = Infinity, count, ratings = Array();
-            for(var index in data){
-                count = parseInt(data[index]['count']);
-                if(count > max)
+            }
+            var max = 0,
+                min = Infinity,
+                count, ratings = Array();
+            for (var index in data) {
+                count = parseInt(data[index].count);
+                if (count > max) {
                     max = count;
-                if(count < min)
+                }
+
+                if (count < min) {
                     min = count;
+                }
+
                 ratings[parseInt(index)] = count;
             }
-            Seller['product_count'] = ratings;
-            Seller['product_count_max'] = max;
-            Seller['product_count_min'] = min;
+            Seller.product_count = ratings;
+            Seller.product_count_max = max;
+            Seller.product_count_min = min;
             cb();
         });
     };
 
-    Seller['assignSeller'] = function() {
+    Seller.assignSeller = function() {
         Seller.count(function(err, count) {
             count = parseInt(count);
             var sum = count * (count + 1) / 2;
@@ -62,9 +68,12 @@ module.exports = function(options) {
                 (function process(index) {
                     if (index < products.length) {
                         seller_index = getSellerIndex();
-                        products[index].save({id_seller: seller_index}, function(err) {
-                            if (err)
+                        products[index].save({
+                            id_seller: seller_index
+                        }, function(err) {
+                            if (err) {
                                 throw err;
+                            }
                             console.log(index + 1, seller_index);
                             process(++index);
                         });
@@ -74,7 +83,7 @@ module.exports = function(options) {
         });
     };
 
-    Seller['generateSeller'] = function() {
+    Seller.generateSeller = function() {
         var item = {
             seller_name: getRandomString(),
             address: getRandomString(),
@@ -83,8 +92,9 @@ module.exports = function(options) {
         };
 
         Seller.create(item, function(err, item) {
-            if (err)
+            if (err) {
                 throw err;
+            }
             console.log(item.id_seller);
         });
     };

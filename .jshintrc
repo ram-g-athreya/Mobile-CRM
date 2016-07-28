@@ -1,0 +1,17 @@
+{
+    "curly": true,
+    "eqeqeq": true,
+    "unused": true,
+    "undef": true,
+    "globals": {
+        "require": true,
+        "console": true,
+        "app": true,
+        "module": true,
+        "exports": true,
+        "getRandomString": true,
+        "getRandomNumber": true,
+        "getRandomItem": true,
+        "transformRange": true
+    }
+}
